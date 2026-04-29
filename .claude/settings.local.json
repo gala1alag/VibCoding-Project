@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip list *)",
+      "Read(//c/Program Files/Wireshark/**)",
+      "Read(//c/Program Files/Npcap/**)",
+      "Bash(reg query *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
