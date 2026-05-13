@@ -1,1 +1,6 @@
 .claude/
+data/devhub.db
+data/settings.json
+__pycache__/
+**/__pycache__/
+*.pyc
