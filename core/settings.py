@@ -28,9 +28,12 @@ class Settings:
                 print(f"Warning: could not load settings: {e}")
 
     def save(self):
-        os.makedirs(os.path.dirname(_SETTINGS_PATH), exist_ok=True)
-        with open(_SETTINGS_PATH, "w", encoding="utf-8") as f:
-            json.dump(self._data, f, ensure_ascii=False, indent=2)
+        try:
+            os.makedirs(os.path.dirname(_SETTINGS_PATH), exist_ok=True)
+            with open(_SETTINGS_PATH, "w", encoding="utf-8") as f:
+                json.dump(self._data, f, ensure_ascii=False, indent=2)
+        except OSError as e:
+            print(f"Warning: could not save settings: {e}")
 
     def get(self, key: str):
         return self._data.get(key)
