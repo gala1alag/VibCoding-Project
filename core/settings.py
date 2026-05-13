@@ -21,8 +21,11 @@ class Settings:
 
     def _load(self):
         if os.path.exists(_SETTINGS_PATH):
-            with open(_SETTINGS_PATH, "r", encoding="utf-8") as f:
-                self._data.update(json.load(f))
+            try:
+                with open(_SETTINGS_PATH, "r", encoding="utf-8") as f:
+                    self._data.update(json.load(f))
+            except (json.JSONDecodeError, OSError) as e:
+                print(f"Warning: could not load settings: {e}")
 
     def save(self):
         os.makedirs(os.path.dirname(_SETTINGS_PATH), exist_ok=True)
