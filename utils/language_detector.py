@@ -19,6 +19,8 @@ def detect_language(path: str) -> str:
     try:
         for entry in os.scandir(path):
             if entry.is_file():
+                if entry.name.endswith(".pro"):
+                    return "Qt"
                 lang = _EXT_MAP.get(os.path.splitext(entry.name)[1].lower())
                 if lang:
                     counts[lang] = counts.get(lang, 0) + 1

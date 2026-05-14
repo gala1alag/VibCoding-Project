@@ -15,7 +15,8 @@ _TARGETS = {
 
 _LANG_PRIORITY = {
     "Python":     ["PyCharm", "VS Code", "Cursor"],
-    "C++":        ["Qt Creator", "Visual Studio", "VS Code"],
+    "C++":        ["Visual Studio", "VS Code", "Cursor"],
+    "Qt":         ["Qt Creator", "Visual Studio"],
     "JavaScript": ["VS Code", "Cursor"],
     "TypeScript": ["VS Code", "Cursor"],
 }
