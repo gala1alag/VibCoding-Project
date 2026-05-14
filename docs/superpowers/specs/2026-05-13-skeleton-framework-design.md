@@ -125,3 +125,12 @@ main.py
 - rapidfuzz / scapy / pyshark 的安装与使用
 - 打包（PyInstaller）
 - LeetCode 模块
+
+---
+
+## 十一、后续开发状态
+
+| 阶段 | 模块 | 设计文档 | 状态 |
+|------|------|----------|------|
+| P0 | 项目管理 | `2026-05-14-project-management-design.md` | 设计完成，待实现 |
+| P0 | 快速启动器 | — | 待设计 |
