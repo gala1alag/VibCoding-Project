@@ -23,6 +23,17 @@ _LANG_PRIORITY = {
 _DEFAULT_PRIORITY = ["VS Code", "Cursor", "Notepad++"]
 
 
+def _find_vs():
+    """Visual Studio 安装在深层路径，单独处理。"""
+    base = os.path.join(os.environ.get("PROGRAMFILES", "C:/Program Files"), "Microsoft Visual Studio")
+    if not os.path.isdir(base):
+        return None
+    for root, _, files in os.walk(base):
+        if "devenv.exe" in files:
+            return os.path.join(root, "devenv.exe")
+    return None
+
+
 def _scan_dirs() -> dict:
     found = {}
     roots = [
@@ -38,11 +49,16 @@ def _scan_dirs() -> dict:
                 if not entry.is_dir():
                     continue
                 for exe, name in _TARGETS.items():
+                    if name == "Visual Studio":
+                        continue  # 由 _find_vs 处理
                     candidate = os.path.join(entry.path, exe)
                     if os.path.isfile(candidate) and name not in found:
                         found[name] = candidate
         except OSError:
             pass
+    vs = _find_vs()
+    if vs:
+        found["Visual Studio"] = vs
     return found
 
 
