@@ -65,7 +65,7 @@ memo   TEXT DEFAULT ''          -- 单行短备注
 `views/project_list.py`
 
 布局（从上到下）：
-1. 语言筛选 `QComboBox`（全部 / C++ / Python / Java / JavaScript / TypeScript / C# / Go / Rust / 其他）
+1. 语言筛选 `QComboBox`（全部 / C++ / Python / Java / JavaScript / TypeScript / C# / Go / Rust / HTML/CSS / 其他）
 2. `QListWidget` — 每项显示：彩色圆点 + 项目名 + 语言标签
 3. 底部按钮行：添加 + 删除
 
