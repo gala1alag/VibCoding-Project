@@ -76,5 +76,15 @@ def init_db():
                 last_scanned_at TEXT DEFAULT (datetime('now', 'localtime'))
             );
         """)
+        cur = conn.cursor()
+        for col, definition in [
+            ("color", "TEXT DEFAULT '#4A90D9'"),
+            ("memo",  "TEXT DEFAULT ''"),
+        ]:
+            try:
+                cur.execute(f"ALTER TABLE projects ADD COLUMN {col} {definition}")
+                conn.commit()
+            except Exception:
+                pass
     finally:
         conn.close()
