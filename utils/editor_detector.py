@@ -34,6 +34,14 @@ def _find_vs():
     return None
 
 
+def _find_qtcreator():
+    for drive in ("C:/", "D:/", "E:/"):
+        candidate = os.path.join(drive, "Qt/Tools/QtCreator/bin/qtcreator.exe")
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
 def _scan_dirs() -> dict:
     found = {}
     roots = [
@@ -59,6 +67,9 @@ def _scan_dirs() -> dict:
     vs = _find_vs()
     if vs:
         found["Visual Studio"] = vs
+    qtc = _find_qtcreator()
+    if qtc and "Qt Creator" not in found:
+        found["Qt Creator"] = qtc
     return found
 
 

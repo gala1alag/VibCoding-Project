@@ -35,24 +35,6 @@ def _collect() -> list[dict]:
                     if target and target.lower().endswith(".exe") and target not in apps:
                         apps[target] = os.path.splitext(f)[0]
 
-    # Program Files 一级子目录 .exe
-    for env in ("PROGRAMFILES", "PROGRAMFILES(X86)"):
-        root = os.environ.get(env, "")
-        if not os.path.isdir(root):
-            continue
-        try:
-            for entry in os.scandir(root):
-                if not entry.is_dir():
-                    continue
-                try:
-                    for f in os.scandir(entry.path):
-                        if f.is_file() and f.name.lower().endswith(".exe") and f.path not in apps:
-                            apps[f.path] = os.path.splitext(f.name)[0]
-                except OSError:
-                    pass
-        except OSError:
-            pass
-
     return [{"name": name, "path": path} for path, name in apps.items()]
 
 
