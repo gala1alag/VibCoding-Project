@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QTabWidget, QStackedWidget, QWidget
+from PyQt5.QtWidgets import QMainWindow, QTabWidget, QWidget
 from PyQt5.QtCore import Qt
 
 from views.overview import OverviewView
