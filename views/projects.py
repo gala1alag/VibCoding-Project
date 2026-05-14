@@ -23,3 +23,4 @@ class ProjectsView(QWidget):
 
         self._list.project_selected.connect(self._detail.load)
         self._list.project_deleted.connect(self._detail.clear)
+        self._detail.editor_opened.connect(self._list.refresh)

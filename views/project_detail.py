@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import (
     QLineEdit, QComboBox, QPushButton, QPlainTextEdit, QTextEdit,
     QSplitter, QColorDialog, QToolButton, QMenu, QAction, QSizePolicy
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QColor
 from controllers.project_ctrl import ProjectCtrl
 
@@ -11,6 +11,8 @@ LANGUAGES = ["Python", "C++", "Java", "JavaScript", "TypeScript", "C#", "Go", "R
 
 
 class ProjectDetailWidget(QWidget):
+    editor_opened = pyqtSignal()
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self._ctrl = ProjectCtrl()
@@ -167,3 +169,4 @@ class ProjectDetailWidget(QWidget):
     def _open_with(self, editor_path: str):
         if self._project and editor_path:
             self._ctrl.open_in_editor(self._project, editor_path)
+            self.editor_opened.emit()
