@@ -84,7 +84,7 @@ def init_db():
             try:
                 cur.execute(f"ALTER TABLE projects ADD COLUMN {col} {definition}")
                 conn.commit()
-            except Exception:
+            except sqlite3.OperationalError:
                 pass
     finally:
         conn.close()
